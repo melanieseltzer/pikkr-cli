@@ -1,27 +1,32 @@
 import { Command, flags } from '@oclif/command';
+import chalk from 'chalk';
+import pikkr from 'pikkr';
 
 class PikkrCli extends Command {
-  static description = 'describe the command here';
+  static description = 'Pick something random from a list of items.';
 
   static flags = {
     // add --version flag to show CLI version
     version: flags.version({ char: 'v' }),
     help: flags.help({ char: 'h' }),
-    // flag with a value (-n, --name=VALUE)
-    name: flags.string({ char: 'n', description: 'name to print' }),
-    // flag with no value (-f, --force)
-    force: flags.boolean({ char: 'f' })
+    list: flags.string({
+      char: 'l',
+      description: 'List of items, separated by spaces',
+      multiple: true
+    })
   };
 
-  static args = [{ name: 'file' }];
+  static examples = ['$ pikkr --list burger pasta', '$ pikkr -l burger pasta'];
 
   async run() {
-    const { args, flags } = this.parse(PikkrCli);
+    const { flags } = this.parse(PikkrCli);
+    const { list } = flags;
 
-    const name = flags.name || 'world';
-    this.log(`hello ${name} from ./src/index.ts`);
-    if (args.file && flags.force) {
-      this.log(`you input --force and --file: ${args.file}`);
+    try {
+      const result = pikkr(list);
+      this.log(chalk.magenta(`You should pick: ${result}!`));
+    } catch (e) {
+      this.error(chalk.red(e.message));
     }
   }
 }

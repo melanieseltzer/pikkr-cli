@@ -4,13 +4,15 @@
   "version": "0.0.0",
   "author": "Melanie Seltzer @melanieseltzer",
   "bin": {
-    "pikkr-cli": "./bin/run"
+    "pikkr": "./bin/run"
   },
   "bugs": "https://github.com/melanieseltzer/pikkr-cli/issues",
   "dependencies": {
     "@oclif/command": "^1.5.8",
     "@oclif/config": "^1.12.4",
     "@oclif/plugin-help": "^2.1.6",
+    "chalk": "^2.4.2",
+    "pikkr": "^1.0.1",
     "tslib": "^1.9.3"
   },
   "devDependencies": {
@@ -57,7 +59,7 @@
   },
   "main": "lib/index.js",
   "oclif": {
-    "bin": "pikkr-cli"
+    "bin": "pikkr"
   },
   "repository": "melanieseltzer/pikkr-cli",
   "scripts": {
