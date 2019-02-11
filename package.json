@@ -1,7 +1,7 @@
 {
   "name": "pikkr-cli",
   "description": "Get a random element from an array, on the command line.",
-  "version": "0.0.0",
+  "version": "1.0.0",
   "author": "Melanie Seltzer @melanieseltzer",
   "bin": {
     "pikkr": "./bin/run"
